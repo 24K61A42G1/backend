@@ -25,5 +25,20 @@ router.put("/:id/watched", async (req, res) => {
 
   res.json(movie);
 });
+// Add a new movie
+router.post("/", async (req, res) => {
+  try {
+    const movie = new Movie({
+      title: req.body.title,
+      genre: req.body.genre,
+      watched: req.body.watched || false,
+    });
+
+    const savedMovie = await movie.save();
+    res.status(201).json(savedMovie);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 module.exports = router;
