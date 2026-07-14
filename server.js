@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-constdns=require("dns")
-dns.setServers(["8.8.8.8","8.8.4.4"])
+const dns = require("node:dns"); // or require("dns")
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const connectDB = require("./config/db");
 
@@ -12,14 +13,12 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-const movieRoutes = require(
-  "./routes/movieRoutes"
-);
+const movieRoutes = require("./routes/movieRoutes");
 
 app.use("/api/movies", movieRoutes);
 
-app.listen(5001, () => {
-  console.log(
-    "Server running on port 5001"
-  );
+const PORT = process.env.PORT || 5001;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
