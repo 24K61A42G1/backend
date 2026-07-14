@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://charantejasunkara24_db_user:BQDXve11e73wmInl@cluster0.j9ezhho.mongodb.net/charan"
+      "mongodb+srv://charantejasunkara24_db_user:BQDXve11e73wmInl@cluster0.g4zkjck.mongodb.net/charan"
     );
 
     console.log("MongoDB Connected");
