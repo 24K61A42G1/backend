@@ -20,7 +20,8 @@ router.put("/:id/watched", async (req, res) => {
     const movie = await Movie.findByIdAndUpdate(
     req.params.id,
     { watched: true },
-    { new: true }
+    { new: true },
+    {}
   );
 
   res.json(movie);
@@ -32,6 +33,7 @@ router.post("/", async (req, res) => {
       title: req.body.title,
       genre: req.body.genre,
       watched: req.body.watched || false,
+      poster: req.body.poster
     });
 
     const savedMovie = await movie.save();
